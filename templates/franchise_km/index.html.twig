@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calcul Franchise KM{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center text-white">Calcul Franchise KM</h1>
+        <form action="{{ path('app_franchiseKM') }}" method="get">
+            <div class="mb-3">
+                <label for="annee_souscription" class="form-label text-center fw-bold">Année de souscription :</label>
+                <input type="number" class="form-control" id="annee_souscription" name="annee_souscription">
+            </div>
+            <div class="mb-3">
+                <label for="km_souscription" class="form-label text-center fw-bold">KM à la souscription :</label>
+                <input type="number" class="form-control" id="km_souscription" name="km_souscription">
+            </div>
+            <div class="mb-3">
+                <label for="km_autorise_par_an" class="form-label text-center text-center fw-bold">KM autorisés par an :</label>
+                <input type="number" class="form-control" id="km_autorise_par_an" name="km_autorise_par_an">
+            </div>
+            <div class="mb-3">
+                <label for="annee_sinistre" class="form-label text-center fw-bold">Année du sinistre :</label>
+                <input type="number" class="form-control" id="annee_sinistre" name="annee_sinistre">
+            </div>
+            <div class="mb-3">
+                <label for="km_releve_sinistre" class="form-label text-center fw-bold">KM relevés lors du sinistre :</label>
+                <input type="number" class="form-control" id="km_releve_sinistre" name="km_releve_sinistre">
+            </div>
+            <button type="submit" class="btn btn-primary">Calculer</button>
+        </form>
+
+        {% if franchiseAPayer is not null %}
+            <div class="bg-success text-white text-center mx-auto w-25 mt-4">
+                {% if franchiseAPayer %}
+                    <p>La franchise km est à payer.</p>
+                {% else %}
+                    <p>Pas de franchise km à régler.</p>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

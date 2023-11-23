@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calculateur{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center text-white">Calculateur</h1>
+        <form action="{{ path('app_result') }}" method="post">
+            <div class="mb-3">
+                <label for="cession" class="form-label">Cession :</label>
+                <select class="form-select" id="cession" name="cession">
+                    <option value="yes">Oui</option>
+                    <option value="no">Non</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="montant_vade_ht" class="form-label">Montant Vade HT :</label>
+                <input type="number" class="form-control" id="montant_vade_ht" name="montant_vade_ht">
+            </div>
+            <!-- Ajoutez les autres champs du formulaire ici -->
+            <!-- Exemple : -->
+            <div class="mb-3">
+                <label for="valeur_residuelle" class="form-label">Valeur Résiduelle :</label>
+                <input type="number" class="form-control" id="valeur_residuelle" name="valeur_residuelle">
+            </div>
+            <!-- ... -->
+            <button type="submit" class="btn btn-primary">Calculer</button>
+        </form>
+    </div>
+{% endblock %}

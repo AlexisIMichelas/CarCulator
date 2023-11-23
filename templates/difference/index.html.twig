@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calcul Différence{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center">Calcul Différence</h1>
+        <form action="{{ path('app_result_difference') }}" method="post">
+            <!-- Vos champs de formulaire ici -->
+            <div class="mb-3">
+                <label for="facture" class="form-label">Facture :</label>
+                <input type="number" class="form-control" id="facture" name="facture">
+            </div>
+            <!-- ... Autres champs de formulaire ... -->
+            <button type="submit" class="btn btn-primary">Calculer</button>
+        </form>
+
+        {% if difference is defined %}
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h5 class="card-title">Résultat</h5>
+                    <p class="card-text">La différence est de : {{ difference }} €</p>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Résultat du calcul{% endblock %}
+
+{% block body %}
+    <div class="container mt-5">
+        <h1 class="text-center">Résultat du calcul</h1>
+        <p>Montant Vade HT : {{ montantVadeHT }}</p>
+        <p>Valeur Résiduelle : {{ valeurResiduelle }}</p>
+        <!-- Affichez les autres résultats ici -->
+        <!-- Exemple : -->
+        <p>Franchise : {{ franchise }}</p>
+        <!-- ... -->
+    </div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+<div class="container text-center">
+    <form action="{{ path('app_home') }}" method="get" class="mb-4">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <label for="calcul_choice" class="fs-1 form-label text-white mt-3 mb-3">Choisissez votre calcul</label>
+                <select id="calcul_choice" name="calcul_choice" class="form-select mb-3">
+                    <option value="calcul_vrade">Calcul de VRADE</option>
+                    <option value="calcul_franchise_km">Calcul de Franchise KM</option>
+                    <option value="difference_re_facture">Différence RE/Facture</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <input type="submit" value="Valider" class="btn btn-primary mb-3">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <a href="#" class="btn btn-success mt-5">Soumettre mon règlement</a>
+            </div>
+        </div>
+    </form>
+
+    {% if calculChoice %}
+        <p>Vous avez choisi : {{ calculChoice }}</p>
+        {# Ajoutez ici la logique pour rediriger vers le contrôleur spécifique en fonction du choix fait #}
+        {% if calculChoice == 'calcul_vrade' %}
+            {% set redirectionRoute = 'app_calculator' %}
+        {% elseif calculChoice == 'calcul_franchise_km' %}
+            {% set redirectionRoute = 'app_franchiseKM' %}
+        {% elseif calculChoice == 'difference_re_facture' %}
+            {% set redirectionRoute = 'app_difference' %}
+        {% endif %}
+
+        {% if redirectionRoute is defined %}
+            <script>
+                window.location.href = "{{ path(redirectionRoute) }}";
+            </script>
+        {% endif %}
+    {% endif %}
+</div>
+{% endblock %}
